@@ -7,7 +7,7 @@ let life;
 
 ctx.imageSmoothingEnabled = false;
 
-canvas.addEventListener('click', (event) => {
+canvas.addEventListener('mouseup', (event) => {
     const x = event.offsetX;
     const y = event.offsetY;
     let cellWidth = canvas.width / life.width;
@@ -15,8 +15,20 @@ canvas.addEventListener('click', (event) => {
     let cellX = Math.floor(x / cellWidth);
     let cellY = Math.floor(y / cellHeight);
 
-    life.setAlive(cellX, cellY, true);
+    switch (event.button) {
+    case 0:
+	life.setAlive(cellX, cellY, true);
+	break;
+    case 2:
+	life.setAlive(cellX, cellY, false);
+	break;
+    }
+
     render();
+});
+
+canvas.addEventListener('contextmenu', (event) => {
+    event.preventDefault();
 });
 
 function main()
