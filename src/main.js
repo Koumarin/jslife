@@ -1,11 +1,9 @@
-"use strict";
+import CanvasRenderer from './canvas_renderer.js';
 
 const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
 
+let renderer = new CanvasRenderer(canvas);
 let life;
-
-ctx.imageSmoothingEnabled = false;
 
 canvas.addEventListener('mouseup', (event) => {
     const x = event.offsetX;
@@ -24,7 +22,7 @@ canvas.addEventListener('mouseup', (event) => {
 	break;
     }
 
-    render();
+    renderer.render(life.grid);
 });
 
 canvas.addEventListener('contextmenu', (event) => {
@@ -34,26 +32,7 @@ canvas.addEventListener('contextmenu', (event) => {
 function main()
 {
     life = new Life(20, 10);
-    render();
-}
-
-function render()
-{
-    let cellWidth = canvas.width / life.width;
-    let cellHeight = canvas.height / life.height;
-
-    ctx.fillStyle = "rgb(255 255 255)";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "rgb(0 0 0)";
-    for (let i = 0; i < life.height; i++) {
-	for (let j = 0; j < life.width; j++) {
-	    if (life.grid[i][j])
-		ctx.fillRect(j * cellWidth,
-			     i * cellHeight,
-			     cellWidth,
-			     cellHeight);
-	}
-    }
+    renderer.render(life.grid);
 }
 
 class Life {
