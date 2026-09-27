@@ -10,33 +10,46 @@ ctx.imageSmoothingEnabled = false;
 canvas.addEventListener('click', (event) => {
     const x = event.offsetX;
     const y = event.offsetY;
+    let cellWidth = canvas.width / life.width;
+    let cellHeight = canvas.height / life.height;
+    let cellX = Math.floor(x / cellWidth);
+    let cellY = Math.floor(y / cellHeight);
 
-    console.log(`Click coordinates: (${x}, ${y})`);
+    life.setAlive(cellX, cellY, true);
+    render();
 });
 
 function main()
 {
-    let cellSize
+    life = new Life(20, 10);
+    render();
+}
 
-    life = new Life(20, 20);
-    cellSize = canvas.width / life.width;
+function render()
+{
+    let cellWidth = canvas.width / life.width;
+    let cellHeight = canvas.height / life.height;
 
+    ctx.fillStyle = "rgb(255 255 255)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "rgb(0 0 0)";
     for (let i = 0; i < life.height; i++) {
 	for (let j = 0; j < life.width; j++) {
 	    if (life.grid[i][j])
-		ctx.fillRect(j * cellSize, i * cellSize, cellSize, cellSize);
+		ctx.fillRect(j * cellWidth,
+			     i * cellHeight,
+			     cellWidth,
+			     cellHeight);
 	}
     }
 }
 
 class Life {
-    constructor(height, width) {
+    constructor(width, height) {
 	this.height = height;
 	this.width = width;
 	this.grid = Array.from({length: height},
-			       () => Array.from({length: width},
-						() => Math.random() < 0.5));
+			       () => Array(width).fill(false));
     }
 
     setAlive(x, y, isAlive) {
