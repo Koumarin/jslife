@@ -10,8 +10,8 @@ export default class CanvasRenderer extends Renderer {
     }
 
     render(grid) {
-	let cellWidth = canvas.width / grid.width;
-	let cellHeight = canvas.height / grid.height;
+	let cellWidth = this.canvas.width / grid.width;
+	let cellHeight = this.canvas.height / grid.height;
 
 	this.ctx.fillStyle = 'rgb(255 255 255)';
 	this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
