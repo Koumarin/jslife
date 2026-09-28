@@ -5,6 +5,8 @@ import Simulation from './simulation.js';
 
 const canvas = document.getElementById('canvas');
 
+const buttonStep = document.getElementById('button_step');
+
 let renderer = new CanvasRenderer(canvas);
 let sim = new Simulation(new Grid(20, 10), new LifeRuleset([3], [2,3]));
 
@@ -20,10 +22,6 @@ canvas.addEventListener('mouseup', (event) => {
     case 0:
 	sim.grid.setState(cellX, cellY, true);
 	break;
-    case 1:
-	sim.step();
-	renderer.render(sim.grid);
-	break;
     case 2:
 	sim.grid.setState(cellX, cellY, false);
 	break;
@@ -34,6 +32,11 @@ canvas.addEventListener('mouseup', (event) => {
 
 canvas.addEventListener('contextmenu', (event) => {
     event.preventDefault();
+});
+
+buttonStep.addEventListener('click', (event) => {
+    sim.step();
+    renderer.render(sim.grid);
 });
 
 renderer.render(sim.grid);
