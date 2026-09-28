@@ -1,11 +1,12 @@
 import CanvasRenderer from './canvas_renderer.js';
 import Grid from './grid.js';
+import LifeRuleset from './life_ruleset.js';
 import Simulation from './simulation.js';
 
 const canvas = document.getElementById('canvas');
 
 let renderer = new CanvasRenderer(canvas);
-let sim = new Simulation(new Grid(20, 10));
+let sim = new Simulation(new Grid(20, 10), new LifeRuleset([3], [2,3]));
 
 canvas.addEventListener('mouseup', (event) => {
     const x = event.offsetX;
