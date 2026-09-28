@@ -3,8 +3,7 @@
   <head>
     <meta charset="utf-8"/>
 
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-	  rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0..1&icon_names=play_arrow,pause,skip_next" rel="stylesheet" />
     <link rel="stylesheet" href="style.css"/>
     <script type="module" src="src/main.js" defer></script>
 
@@ -14,16 +13,21 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
 
     <div>
-      <button id="button_play">
-	<span class="material-symbols-outlined">play_arrow</span>
-      </button>
-      <button id="button_pause">
-	<span class="material-symbols-outlined">pause</span>
-      </button>
+      <input type="radio" id="button_play" name="play_pause"/>
+      <label for="button_play" class="material-symbols-outlined">
+	play_arrow
+      </label>
+
+      <input type="radio" id="button_pause" name="play_pause" checked/>
+      <label for="button_pause" class="material-symbols-outlined">
+	pause
+      </label>
+
       <button id="button_step">
 	<span class="material-symbols-outlined">skip_next</span>
       </button>
     </div>
+
     <canvas id="canvas">Your browser does not support canvas.</canvas>
   </body>
 </html>
