@@ -1,7 +1,8 @@
 import Ruleset from './ruleset.js';
 
-export default class LifeRuleset {
+export default class LifeRuleset extends Ruleset {
     constructor(birth, survival) {
+	super();
 	this.birth = birth;
 	this.survival = survival;
     }
