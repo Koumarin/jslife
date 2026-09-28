@@ -11,7 +11,7 @@ export default class Simulation {
 	for (let i = 0; i < this.grid.height; i++)
 	    for (let j = 0; j < this.grid.width; j++)
 		nextGrid.setState(j, i, this.nextState(j, i, this.grid));
-	this.grid.cells = nextGrid.cells;
+	this.grid = nextGrid;
     }
 
     nextState(x, y, grid) {
