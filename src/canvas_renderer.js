@@ -18,7 +18,7 @@ export default class CanvasRenderer extends Renderer {
 	this.ctx.fillStyle = 'rgb(0 0 0)';
 	for (let i = 0; i < grid.height; i++) {
 	    for (let j = 0; j < grid.width; j++) {
-		if (grid.isAlive(j, i))
+		if (grid.getState(j, i))
 		    this.ctx.fillRect(j * cellWidth,
 				      i * cellHeight,
 				      cellWidth,
