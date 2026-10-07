@@ -10,52 +10,52 @@ const buttonPause = document.getElementById('button_pause');
 const buttonStep = document.getElementById('button_step');
 
 let renderer = new CanvasRenderer(canvas);
-let sim = new Simulation(new Grid(20, 10), new LifeRuleset([3], [2,3]));
+let sim = new Simulation(new Grid(20, 10), new LifeRuleset([3], [2, 3]));
 
 let stepInterval
 
 canvas.addEventListener('mouseup', (event) => {
-    const x = event.offsetX;
-    const y = event.offsetY;
-    let cellWidth = canvas.width / sim.grid.width;
-    let cellHeight = canvas.height / sim.grid.height;
-    let cellX = Math.floor(x / cellWidth);
-    let cellY = Math.floor(y / cellHeight);
+	const x = event.offsetX;
+	const y = event.offsetY;
+	let cellWidth = canvas.width / sim.grid.width;
+	let cellHeight = canvas.height / sim.grid.height;
+	let cellX = Math.floor(x / cellWidth);
+	let cellY = Math.floor(y / cellHeight);
 
-    switch (event.button) {
-    case 0:
-	sim.grid.setState(cellX, cellY, true);
-	break;
-    case 2:
-	sim.grid.setState(cellX, cellY, false);
-	break;
-    }
+	switch (event.button) {
+		case 0:
+			sim.grid.setState(cellX, cellY, true);
+			break;
+		case 2:
+			sim.grid.setState(cellX, cellY, false);
+			break;
+	}
 
-    renderer.render(sim.grid);
+	renderer.render(sim.grid);
 });
 
 canvas.addEventListener('contextmenu', (event) => {
-    event.preventDefault();
+	event.preventDefault();
 });
 
 buttonPlay.addEventListener('click', (event) => {
-    if (!stepInterval)
-	stepInterval = setInterval(function() {
-	    sim.step();
-	    renderer.render(sim.grid);
-	}, 50);
+	if (!stepInterval)
+		stepInterval = setInterval(function () {
+			sim.step();
+			renderer.render(sim.grid);
+		}, 50);
 });
 
 buttonPause.addEventListener('click', (event) => {
-    if (stepInterval) {
-	clearInterval(stepInterval);
-	stepInterval = null;
-    }
+	if (stepInterval) {
+		clearInterval(stepInterval);
+		stepInterval = null;
+	}
 });
 
 buttonStep.addEventListener('click', (event) => {
-    sim.step();
-    renderer.render(sim.grid);
+	sim.step();
+	renderer.render(sim.grid);
 });
 
 renderer.render(sim.grid);
