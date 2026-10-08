@@ -3,8 +3,10 @@
     "version": "0.1.0",
     "description": "A simple implementation of Conway's Game of Life in JavaScript.",
     "author": "Mariana Figueiredo Schmalfuss <m4r1ana@proton.me> (https://Koumarin.github.io)",
+    "type": "module",
     "scripts": {
-        "serve": "npx http-server"
+        "serve": "npx http-server",
+        "terminal": "node src/terminal.js"
     },
     "repository": {
         "type": "git",
