@@ -1,9 +1,9 @@
-import Application from './core/application.js';
-import CanvasInputControl from './input/canvas_input_control.js';
-import CanvasRenderer from './renderer/canvas_renderer.js';
-import Grid from './core/grid.js';
-import LifeRuleset from './core/life_ruleset.js';
-import Simulation from './core/simulation.js';
+import Application from 'jslife/core/application.js';
+import CanvasInputControl from 'jslife/input/canvas_input_control.js';
+import CanvasRenderer from 'jslife/renderer/canvas_renderer.js';
+import Grid from 'jslife/core/grid.js';
+import LifeRuleset from 'jslife/core/life_ruleset.js';
+import Simulation from 'jslife/core/simulation.js';
 
 const canvas = document.getElementById('canvas');
 const buttonPlay = document.getElementById('button_play');
