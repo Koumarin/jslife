@@ -35,6 +35,24 @@ export default class Application {
 		this.render();
 	}
 
+	randomize() {
+		const grid = this.simulation.grid;
+
+		for (let y = 0; y < grid.height; y++)
+			for (let x = 0; x < grid.width; x++)
+				grid.setState(x, y, Math.random() < 0.5);
+		this.render();
+	}
+
+	clear() {
+		const grid = this.simulation.grid;
+
+		for (let y = 0; y < grid.height; y++)
+			for (let x = 0; x < grid.width; x++)
+				grid.setState(x, y, false);
+		this.render();
+	}
+
 	render() {
 		this.renderer.render(this.simulation.grid);
 	}
